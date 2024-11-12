@@ -8,25 +8,25 @@ export class UsuariosService {
         let usuario={
             id:'1',
            nombre:'juan',
-           apellido:''
+           apellido:'perez'
         };
         this.usuarios.push(usuario);
         usuario={
             id:'4',
            nombre:'naty',
-           apellido:''
+           apellido:'garcia'
         };
         this.usuarios.push(usuario);
         usuario={
             id:'2',
            nombre:'marcelo',
-           apellido:''
+           apellido:'lorenzo'
         };
         this.usuarios.push(usuario);
         usuario={
             id:'3',
            nombre:'maria',
-           apellido:''
+           apellido:'cap'
         };
         this.usuarios.push(usuario);
 
