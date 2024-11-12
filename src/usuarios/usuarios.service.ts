@@ -1,4 +1,5 @@
 import { Injectable } from '@nestjs/common';
+import { usuarioModelo } from './usuario.model';
 
 @Injectable()
 export class UsuariosService {
@@ -6,22 +7,26 @@ export class UsuariosService {
     constructor() {
         let usuario={
             id:'1',
-           nombre:'juan'
+           nombre:'juan',
+           apellido:''
         };
         this.usuarios.push(usuario);
         usuario={
             id:'4',
-           nombre:'naty'
+           nombre:'naty',
+           apellido:''
         };
         this.usuarios.push(usuario);
         usuario={
             id:'2',
-           nombre:'marcelo'
+           nombre:'marcelo',
+           apellido:''
         };
         this.usuarios.push(usuario);
         usuario={
             id:'3',
-           nombre:'maria'
+           nombre:'maria',
+           apellido:''
         };
         this.usuarios.push(usuario);
 
@@ -35,6 +40,29 @@ export class UsuariosService {
             return this.usuarios[i];
         }
        }
+    }
+    
+    postUser( nuevoUsuario : usuarioModelo ): string {
+        this.usuarios.push( nuevoUsuario );
+        return nuevoUsuario.nombre;
+    }
+
+    putUser( nuevosDatos: usuarioModelo, userToUpdateId:number ) : boolean {
+        const userToUpdate : usuarioModelo = this.usuarios.find( m => m.id === userToUpdateId );
+        if( userToUpdate != undefined ){
+            userToUpdate.nombre = nuevosDatos.nombre;
+            userToUpdate.apellido = nuevosDatos.apellido;
+            return true;
+        } else 
+            return false;
+    }
+
+    deleteUser( id:number ) : boolean {
+        const indiceUsuarioAEliminar = this.usuarios.findIndex( u => u.id === id );
+        if( indiceUsuarioAEliminar == -1 )
+            return false;
+        this.usuarios.splice( indiceUsuarioAEliminar, 1 );
+        return true;
     }
     
 }
